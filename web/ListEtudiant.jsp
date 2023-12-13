@@ -10,8 +10,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-            List<Etudiant> LE = (List<Etudiant>)request.getAttribute("LE");
+            ArrayList<Etudiant> LE = (ArrayList<Etudiant>) request.getAttribute("LE");
             
+         
     %>
 <html>
     <head>
@@ -25,11 +26,11 @@
             <th>nom</th>
             <th>prenom</th>
             </tr>
-            <%  for(Etudiant e : LE){     %>
+            <% for (Etudiant e : LE){ %>
             <tr>
-                <td> <%=e.getId()%>  </td>
-                <td> <%=e.getNom()%>  </td>
-                <td> <%=e.getPrenom()%>  </td>
+                <td><%=e.getId()%></td>
+                <td><%=e.getNom()%></td>
+                <td><%=e.getPrenom()%></td>
             </tr>
             <% } %>
         </table>

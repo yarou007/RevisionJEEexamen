@@ -7,6 +7,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaQuery;
 import models.Etudiant;
 
 /**
@@ -57,7 +58,7 @@ public class ControllerService {
     }
     public boolean Supprimer(Integer id){
               Etudiant e = em.getReference(Etudiant.class, id);
-                e.getId();
+               e.getId();
       
         try{
             em.getTransaction().begin();
@@ -76,10 +77,15 @@ public class ControllerService {
     }
     public List<Etudiant> getAllEtudiant(){
         List<Etudiant> students = new ArrayList<Etudiant>();
-        String req = "SELECT e FROM etudiant e";
+        String req = "SELECT e FROM Etudiant e ";
         Query q = em.createQuery(req);
-        students = (ArrayList<Etudiant> ) q.getResultList();
-        return students;
+        students = ( ArrayList<Etudiant> ) q.getResultList();
+        return students;/*
+        CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+        cq.select(cq.from(Etudiant.class));
+        Query q = em.createQuery(cq);
+        return q.getResultList();*/
+
        
     }
     

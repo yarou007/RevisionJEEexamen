@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/21655/Documents/NetBeansProjects/Exemple%20cours/web/index.html</file>
-            <file>file:/C:/Users/21655/Documents/NetBeansProjects/Exemple%20cours/web/AjoutEtud.jsp</file>
+            <file>file:/C:/Users/21655/Documents/NetBeansProjects/Exemple%20cours/src/java/controllers/suppression.java</file>
+            <file>file:/C:/Users/21655/Documents/NetBeansProjects/Exemple%20cours/web/ListEtudiant.jsp</file>
+            <file>file:/C:/Users/21655/Documents/NetBeansProjects/Exemple%20cours/src/java/controllers/ListEtudiants.java</file>
+            <file>file:/C:/Users/21655/Documents/NetBeansProjects/Exemple%20cours/src/java/models/Etudiant.java</file>
+            <file>file:/C:/Users/21655/Documents/NetBeansProjects/Exemple%20cours/src/java/controllers/ControllerService.java</file>
         </group>
     </open-files>
 </project-private>

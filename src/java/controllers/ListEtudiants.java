@@ -5,7 +5,7 @@
 package controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -36,7 +36,9 @@ public class ListEtudiants extends HttpServlet {
             throws ServletException, IOException {
 
         ControllerService cs = new ControllerService();
-        List<Etudiant> LE  = cs.getAllEtudiant();
+        ArrayList<Etudiant> LE  = (ArrayList<Etudiant>) cs.getAllEtudiant();
+        /*out.println(LE.size());
+        request.setAttribute("size", LE.size());*/
         request.setAttribute("LE", LE);
         RequestDispatcher rds = request.getRequestDispatcher("ListEtudiant.jsp");
         rds.forward(request, response);
