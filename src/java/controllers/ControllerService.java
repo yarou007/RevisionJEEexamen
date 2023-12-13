@@ -22,7 +22,7 @@ public class ControllerService {
         this.em = emf.createEntityManager();
     }
     
-    public Boolean Ajouter(Etudiant e){
+    public boolean Ajouter(Etudiant e){
          
         try{
             em.getTransaction().begin();
@@ -32,11 +32,14 @@ public class ControllerService {
         }catch(Exception ex){
             System.err.println(ex.getMessage());
             return false;
-        }
+        }finally {
+            if (em != null) {
+                em.close();
+            }
         
     }
-    
-    public Boolean Edit(Etudiant e){
+    }
+    public boolean Edit(Etudiant e){
         try{
             em.getTransaction().begin();
             em.merge(e);
@@ -46,10 +49,16 @@ public class ControllerService {
         }catch(Exception ex){
             System.err.println(ex.getMessage());
             return false;
-        }
+        }finally {
+            if (em != null) {
+                em.close();
+            }
     }
-    public Boolean Supprimer(Etudiant e){
-        
+    }
+    public boolean Supprimer(Integer id){
+              Etudiant e = em.getReference(Etudiant.class, id);
+                e.getId();
+      
         try{
             em.getTransaction().begin();
             em.remove(e);
@@ -59,7 +68,11 @@ public class ControllerService {
         }catch(Exception ex){
             System.err.println(ex.getMessage());
             return false;
-        }
+        }finally {
+            if (em != null) {
+                em.close();
+            }
+    }
     }
     public List<Etudiant> getAllEtudiant(){
         List<Etudiant> students = new ArrayList<Etudiant>();

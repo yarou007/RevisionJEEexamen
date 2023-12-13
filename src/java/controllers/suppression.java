@@ -38,9 +38,10 @@ public class suppression extends HttpServlet {
        String prenom = request.getParameter("prenom");
         Etudiant etud = new Etudiant(id,nom,prenom);
         
-        Boolean ok = cs.Supprimer(etud);
+        boolean ok = cs.Supprimer(id);
+        
         if (ok){
-            String msg = "Etudiant "+id+" a ete supprimer avec success";
+            String msg = "Etudiant "+etud.getId()+" a ete supprimer avec success";
             request.setAttribute("msg", msg);
             RequestDispatcher rds = request.getRequestDispatcher("Suppression.jsp");
             rds.forward(request, response);
