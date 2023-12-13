@@ -75,12 +75,14 @@ public class ControllerService {
             }
     }
     }
-    public List<Etudiant> getAllEtudiant(){
-        List<Etudiant> students = new ArrayList<Etudiant>();
+    public ArrayList<Etudiant> getAllEtudiant(){
+        ArrayList<Etudiant> students ;
         String req = "SELECT e FROM Etudiant e ";
         Query q = em.createQuery(req);
+        
         students = ( ArrayList<Etudiant> ) q.getResultList();
         return students;/*
+        
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
         cq.select(cq.from(Etudiant.class));
         Query q = em.createQuery(cq);

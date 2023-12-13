@@ -36,7 +36,7 @@ public class ListEtudiants extends HttpServlet {
             throws ServletException, IOException {
 
         ControllerService cs = new ControllerService();
-        ArrayList<Etudiant> LE  = (ArrayList<Etudiant>) cs.getAllEtudiant();
+        ArrayList<Etudiant> LE  = cs.getAllEtudiant();
         /*out.println(LE.size());
         request.setAttribute("size", LE.size());*/
         request.setAttribute("LE", LE);
