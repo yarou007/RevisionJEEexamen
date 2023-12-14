@@ -6,6 +6,7 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -90,15 +91,14 @@ public class ControllerService {
         }
         return e;
     }
-    public ArrayList<Etudiant> getAllEtudiant(){
-        ArrayList<Etudiant> students=null;
-        try{
-          String sql = " select e( (*) (e.id) ) from `etudiant` e";
+    public List<Etudiant> getAllEtudiant(){
+       List<Etudiant> students= new Vector<>();
+             EntityManager em = emf.createEntityManager();
+
+          String sql = " SELECT e FROM Etudiant e";
             Query q = em.createQuery(sql);
-         students = (ArrayList<Etudiant>) q.getResultList();
-        }catch(Exception ex){
-            students = null;
-        }
+         students = (Vector<Etudiant>) q.getResultList();
+        
         //students = ( ArrayList<Etudiant> ) q.getResultList();
         return students;/*
         

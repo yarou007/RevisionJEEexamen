@@ -12,7 +12,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-    ArrayList<Etudiant> l = (ArrayList<Etudiant>) request.getAttribute("l");
+    List<Etudiant> l =( Vector<Etudiant> )request.getAttribute("l");
     String msg = (String) request.getAttribute("msg");
 
 %>

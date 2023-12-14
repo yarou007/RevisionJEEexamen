@@ -8,6 +8,7 @@ import java.io.IOException;
 import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,7 +37,7 @@ public class ListEtudiants extends HttpServlet {
             throws ServletException, IOException {
 
         ControllerService cs = new ControllerService();
-        ArrayList<Etudiant> l  =  cs.getAllEtudiant();
+        Vector<Etudiant> l  = (Vector<Etudiant>) cs.getAllEtudiant();
         
         if(l!=null){
         request.setAttribute("l", l);
