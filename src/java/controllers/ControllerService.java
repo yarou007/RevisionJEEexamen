@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import models.Etudiant;
 
 /**
@@ -75,20 +76,37 @@ public class ControllerService {
             }
     }
     }
+    
+    
+    public Etudiant getEtudiant(Integer id){
+        Etudiant e = null;
+        try{
+         e = em.getReference(Etudiant.class, id);
+         e.getId();
+         String req = "SELECT e FROM Etudiant e ";
+         Query q = em.createQuery(req);
+        }catch(Exception ex){
+            e=null;
+        }
+        return e;
+    }
     public ArrayList<Etudiant> getAllEtudiant(){
-        ArrayList<Etudiant> students ;
-        String req = "SELECT e FROM Etudiant e ";
-        Query q = em.createQuery(req);
-        
-        students = ( ArrayList<Etudiant> ) q.getResultList();
+        ArrayList<Etudiant> students=null;
+        try{
+          String sql = " select e( (*) (e.id) ) from `etudiant` e";
+            Query q = em.createQuery(sql);
+         students = (ArrayList<Etudiant>) q.getResultList();
+        }catch(Exception ex){
+            students = null;
+        }
+        //students = ( ArrayList<Etudiant> ) q.getResultList();
         return students;/*
         
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
         cq.select(cq.from(Etudiant.class));
         Query q = em.createQuery(cq);
         return q.getResultList();*/
-
-       
+        
     }
     
 }

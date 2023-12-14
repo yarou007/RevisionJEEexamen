@@ -5,9 +5,7 @@
 package controllers;
 
 import java.io.IOException;
-import static java.lang.System.out;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,8 +18,8 @@ import models.Etudiant;
  *
  * @author 21655
  */
-@WebServlet(name = "ListEtudiants", urlPatterns = {"/ListEtudiants"})
-public class ListEtudiants extends HttpServlet {
+@WebServlet(name = "getEtudiant", urlPatterns = {"/getEtudiant"})
+public class getEtudiant extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,19 +32,18 @@ public class ListEtudiants extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+      
+        int id = Integer.parseInt(request.getParameter("id"));
         ControllerService cs = new ControllerService();
-        ArrayList<Etudiant> l  =  cs.getAllEtudiant();
-        
-        if(l!=null){
-        request.setAttribute("l", l);
-        RequestDispatcher rds = request.getRequestDispatcher("ListEtudiant.jsp");
-        rds.forward(request, response);
-        }
-        else {
-            String msg = "Auucin etudiant trouvé dans la liste";
+        Etudiant e = cs.getEtudiant(id);
+        if (e!=null){
+            request.setAttribute("e", e);
+            RequestDispatcher rds = request.getRequestDispatcher("getEtudiant.jsp");
+            rds.forward(request, response);
+        }else {
+            String msg = "Etudiant "+id+ " n existe pas";
             request.setAttribute("msg", msg);
-            RequestDispatcher rds = request.getRequestDispatcher("ListEtudiant.jsp");
+            RequestDispatcher rds = request.getRequestDispatcher("getEtudiant.jsp");
             rds.forward(request, response);
         }
     }
